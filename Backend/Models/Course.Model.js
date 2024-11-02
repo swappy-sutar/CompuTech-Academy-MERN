@@ -15,16 +15,19 @@ const courseSchema = new Schema({
   whatYouWillLearn: {
     type: String,
   },
-  couresContent: [
+  courseContent: [
+    // Fixed typo
     {
       type: Schema.Types.ObjectId,
       ref: "Section",
     },
   ],
-  ratingAndReviews: {
-    type: Schema.Types.ObjectId,
-    ref: "RatingAndReview",
-  },
+  ratingAndReviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "RatingAndReview",
+    },
+  ],
   price: {
     type: Number,
     required: true,
@@ -33,9 +36,9 @@ const courseSchema = new Schema({
   thumbnail: {
     type: String,
   },
-  tag:{
-    type:[String],
-    required:true
+  tag: {
+    type: [String],
+    required: true,
   },
   Category: {
     type: Schema.Types.ObjectId,
@@ -47,6 +50,13 @@ const courseSchema = new Schema({
       ref: "User",
     },
   ],
+  instructions: {
+    type: String,
+  },
+  status: {
+    type: String,
+    enum: ["Draft", "Published"],
+  },
 });
 
 export const Course = mongoose.model("Course", courseSchema);

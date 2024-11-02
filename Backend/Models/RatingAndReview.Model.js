@@ -13,6 +13,12 @@ const ratingAndReviewSchema = new Schema({
     review:{
         type: String,
         required: true
+    },
+    course:{
+        type: Schema.Types.ObjectId,
+        ref: 'Course',
+        index: true,
+        required:true,
     }
 });
 
