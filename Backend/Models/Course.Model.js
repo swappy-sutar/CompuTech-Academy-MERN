@@ -16,7 +16,6 @@ const courseSchema = new Schema({
     type: String,
   },
   courseContent: [
-    // Fixed typo
     {
       type: Schema.Types.ObjectId,
       ref: "Section",
@@ -60,3 +59,4 @@ const courseSchema = new Schema({
 });
 
 export const Course = mongoose.model("Course", courseSchema);
+
