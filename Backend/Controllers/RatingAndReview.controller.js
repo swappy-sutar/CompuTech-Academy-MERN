@@ -60,7 +60,7 @@ const createRating = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: "Failed to create rating",
     });
@@ -98,7 +98,7 @@ const getAverageRating = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: "Failed to get average rating",
     });
@@ -133,7 +133,7 @@ const getAllRating = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: "Failed to get all rating",
     });
