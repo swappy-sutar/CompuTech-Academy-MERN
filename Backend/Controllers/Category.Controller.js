@@ -1,4 +1,4 @@
-import { Category } from "../Models/Category.Model";
+import { Category } from "../Models/Category.Model.js";
 
 const createCategory = async (req, res) => {
   try {
@@ -7,24 +7,25 @@ const createCategory = async (req, res) => {
     if (!name) {
       return res.status(400).json({
         status: false,
-        message: "Please provide name",
+        message: "Please provide a name",
       });
     }
-    const Category = await Category.create({
+
+    const newCategory = await Category.create({
       name,
       description,
     });
 
-    console.log("Category", Category);
+    console.log("Category", newCategory);
 
     res.status(201).json({
       status: true,
-      data: Category,
+      data: newCategory,
       message: "Category created successfully",
     });
   } catch (error) {
     console.error(error);
-    res.status(401).json({
+    res.status(400).json({
       status: false,
       message: "Failed to create Category",
     });
@@ -33,24 +34,24 @@ const createCategory = async (req, res) => {
 
 const getAllCategories = async (req, res) => {
   try {
-    const Categories = await Category.find(
+    const categories = await Category.find(
       {},
       {
         name: true,
-        discription: true,
+        description: true,
       }
     );
 
     res.status(200).json({
       status: true,
-      data: Categories,
-      message: "Categorys retrieved successfully",
+      message: "Categories retrieved successfully",
+      data: categories,
     });
   } catch (error) {
     console.error(error);
-    res.status(401).json({
+    res.status(400).json({
       status: false,
-      message: "Failed to get Categorys",
+      message: "Failed to get categories",
     });
   }
 };
@@ -69,26 +70,26 @@ const categoryPageDetails = async (req, res) => {
       });
     }
 
-    const diffrentCategories = await Category.find({ _id: { $ne: categoryId } })
+    const differentCategories = await Category.find({
+      _id: { $ne: categoryId },
+    })
       .populate("courses")
       .exec();
-
-    //get top 10 selling courses hW
 
     return res.status(200).json({
       status: true,
       data: {
         selectedCategory,
-        diffrentCategories,
+        differentCategories,
       },
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
+    return res.status(400).json({
       status: false,
       message: "Failed to get category details",
-    })
+    });
   }
 };
 
-export { createCategory, getAllCategories };
+export { createCategory, getAllCategories, categoryPageDetails };
