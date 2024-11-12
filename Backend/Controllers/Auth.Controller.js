@@ -69,7 +69,7 @@ const sendOTP = async (req, res) => {
         message: "OTP sent successfully. Please check your email.",
       });
     } else {
-      return res.status(500).json({
+      return res.status(400).json({
         success: false,
         message:
           "OTP generated, but we could not send the email. Please try again later.",
@@ -77,9 +77,9 @@ const sendOTP = async (req, res) => {
     }
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({
+    res.status(400).json({
       status: false,
-      message: error.message,
+      message: "Error sending OTP",
     });
   }
 };
@@ -163,7 +163,7 @@ const signup = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({
+    res.status(400).json({
       status: false,
       message: `User can't be registered. Please try again later.`,
     });
@@ -224,7 +224,7 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error("Error during login:", error);
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: "Login failed. Please try again later.",
     });
@@ -293,7 +293,7 @@ const changePassword = async (req, res) => {
           "Password changed successfully. A confirmation email has been sent.",
       });
     } else {
-      return res.status(500).json({
+      return res.status(400).json({
         success: true,
         message:
           "Password changed successfully, but the confirmation email could not be sent.",
@@ -301,7 +301,7 @@ const changePassword = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: "An error occurred while changing the password",
     });
