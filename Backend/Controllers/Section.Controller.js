@@ -1,29 +1,32 @@
 import { Course } from "../Models/Course.Model.js";
 import { Section } from "../Models/Section.Model.js";
-
 const createSection = async (req, res) => {
   try {
     const { sectionName, courseId } = req.body;
 
     if (!sectionName || !courseId) {
       return res.status(400).json({
-        sucess: false,
+        success: false,
         message: "Please provide all required fields",
       });
     }
+
     const newSection = await Section.create({ sectionName });
 
     const updateCourseDetails = await Course.findByIdAndUpdate(
-      { courseId },
+      courseId, 
       {
-        $push: { couresContent: newSection._id },
+        $push: { courseContent: newSection._id },
       },
       {
         new: true,
       }
     )
-      .populate("sectionName")
-      .populate("subSection")
+      .populate("courseContent")
+      .populate({
+        path: "courseContent",
+        populate: { path: "subSection" },
+      })
       .exec();
 
     return res.status(200).json({
@@ -33,8 +36,8 @@ const createSection = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(401).json({
-      sucess: false,
+    return res.status(400).json({
+      success: false,
       message: "Error creating section",
     });
   }
@@ -42,34 +45,41 @@ const createSection = async (req, res) => {
 
 const updateSection = async (req, res) => {
   try {
-    const { sectionName, courseId } = req.body;
+    const { sectionName, sectionId } = req.body;
 
-    if (!sectionName || !courseId) {
+    if (!sectionName || !sectionId) {
       return res.status(400).json({
-        sucess: false,
+        success: false,
         message: "Please provide all required fields",
       });
     }
 
-    const updateSection = await Section.findByIdAndUpdate(
-      courseId,
+    const updatedSection = await Section.findByIdAndUpdate(
+      sectionId,
       {
-        sectionName,
+        sectionName: sectionName,
       },
       {
         new: true,
       }
     );
 
+    if (!updatedSection) {
+      return res.status(404).json({
+        success: false,
+        message: "Section not found",
+      });
+    }
+
     return res.status(200).json({
       success: true,
-      data: updateSection,
       message: "Section updated successfully",
+      data: updatedSection,
     });
   } catch (error) {
     console.log(error);
-    return res.status(401).json({
-      sucess: false,
+    return res.status(500).json({
+      success: false,
       message: "Error updating section",
     });
   }
@@ -77,15 +87,27 @@ const updateSection = async (req, res) => {
 
 const deleteSection = async (req, res) => {
   try {
-    const { sectionId } = req.params;
+    const { sectionId } = req.body;
 
+    const sectionIdExist = await Section.findById({
+      _id: sectionId,
+    });
+
+    if (!sectionIdExist) {  
+      return res.status(404).json({
+        success: false,
+        message: "Section not found",
+        });
+    }
+    
     if (!sectionId) {
       return res.status(400).json({
         success: false,
         message: "Please provide section id",
       });
     }
-    const deleteSection = await Section.findByIdAndDelete(sectionId);
+    
+    await Section.findByIdAndDelete(sectionId);
 
     return res.status(200).json({
       success: true,
@@ -93,11 +115,11 @@ const deleteSection = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(401).json({
+    return res.status(400).json({
       success: false,
       message: "Error deleting section",
     });
   }
 };
 
-export { createSection, updateSection,deleteSection };
+export { createSection, updateSection, deleteSection };
