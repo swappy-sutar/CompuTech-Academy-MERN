@@ -22,7 +22,7 @@ const userSchema = new Schema({
   },
   accountType: {
     type: String,
-    enum: ["Admin", "Student", "instructor"],
+    enum: ["Admin", "Student", "Instructor"],
   },
   image: {
     type: String,
