@@ -63,6 +63,7 @@ const createCourse = async (req, res) => {
       category: categoryDetails._id,
       thumbnail: thumbnailImage.secure_url,
       tag: tag,
+      status: "Draft",
     });
 
     await User.findByIdAndUpdate(
