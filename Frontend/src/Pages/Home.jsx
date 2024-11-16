@@ -7,6 +7,10 @@ import Banner from "../assets/Images/banner.mp4";
 import CodeBlock from "../Components/core/HomePage/CodeBlock";
 import LearningLanguageSection from "../Components/core/HomePage/LearningLanguageSection";
 import TimelineSection from "../Components/core/HomePage/TimelineSection";
+import InstructorSection from "../Components/core/HomePage/InstructorSection";
+import Footer from "../Components/common/Footer";
+import ExploreMore from "../Components/core/HomePage/ExploreMore";
+
 function Home() {
   return (
     <div>
@@ -101,7 +105,10 @@ function Home() {
             codeColor={"text-blue-25"}
           />
         </div>
-      </div>
+
+            <ExploreMore />
+              
+                   </div>
 
       {/* Section 2 */}
       <div className="bg-pure-greys-5 text-richblack-700 ">
@@ -143,15 +150,28 @@ function Home() {
             </div>
           </div>
 
+          {/* timeline-Section */}
           <TimelineSection />
 
+          {/* Learning-Language-Section */}
           <LearningLanguageSection />
         </div>
       </div>
 
       {/* Section 3 */}
-      {/* Section 4 */}
+      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-center gap-8 bg-richblack-900 text-white">
+
+     <InstructorSection />
+
+     <h2 className="text-center text-4xl font-semibold mt-10">Review from other learners</h2>
+
+      </div>
+
+  
+
       {/* Footer */}
+      <Footer/>
+
     </div>
   );
 }
