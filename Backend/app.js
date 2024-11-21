@@ -6,16 +6,16 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-// const corsOptions = {
-//   origin: ["http://localhost:5173", http://localhost:3000, "https://d-voting-swappy.vercel.app"],
-//   methods: ["POST", "GET", "DELETE", "OPTIONS"],
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: ["http://localhost:5173", "http://localhost:3000", "https://computech-academy-swappy.vercel.app"],
+  methods: ["POST", "GET", "DELETE", "OPTIONS"],
+  credentials: true,
+};
 
 app.use(cookieParser());
 app.use(express.json());
-// app.use(cors(corsOptions));
-// app.options("*", cors());
+app.use(cors(corsOptions));
+app.options("*", cors());
 
 app.use(
   fileUpload({

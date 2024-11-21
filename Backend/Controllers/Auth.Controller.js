@@ -13,16 +13,16 @@ const sendOTP = async (req, res) => {
 
     if (!email) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "Email is required",
       });
     }
 
     const user = await User.findOne({ email });
-
+    
     if (user) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "User already registered",
       });
     }
@@ -53,7 +53,7 @@ const sendOTP = async (req, res) => {
       `
         <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; padding: 20px; max-width: 600px; margin: auto;">
           <h2 style="color: #4CAF50;">Welcome to CompuTech Academy</h2>
-          <p>Dear ${email},</p>
+          <p>Dear User,</p>
           <p>Your One-Time Password (OTP) for verification is:</p>
           <h3 style="background-color: #f8f8f8; padding: 10px; text-align: center; border: 1px dashed #ccc; color: #333;">${otp}</h3>
           <p>Please use this OTP within 10 minutes.</p>
@@ -78,7 +78,7 @@ const sendOTP = async (req, res) => {
   } catch (error) {
     console.error("Error:", error);
     res.status(400).json({
-      status: false,
+      success: false,
       message: "Error sending OTP",
     });
   }
@@ -87,25 +87,25 @@ const sendOTP = async (req, res) => {
 const signup = async (req, res) => {
   try {
     const {
+      accountType,
       firstName,
       lastName,
       email,
       password,
-      conformPassword,
-      accountType,
+      confirmPassword,
       otp,
     } = req.body;
 
-    if (!firstName || !lastName || !email || !password || !conformPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "Please fill all the fields",
       });
     }
 
-    if (password !== conformPassword) {
+    if (password !== confirmPassword) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "Password and Confirm Password do not match",
       });
     }
@@ -114,7 +114,7 @@ const signup = async (req, res) => {
 
     if (userExist) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "Email already exists",
       });
     }
@@ -123,16 +123,20 @@ const signup = async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(1);
 
+      console.log("OTP",otp);
+      console.log("recentOtp", recentOtp);
+      
+
     if (recentOtp.length === 0) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "OTP not found",
       });
     }
 
     if (otp !== recentOtp[0].otp) {
       return res.status(400).json({
-        status: false,
+        success: false,
         message: "Invalid OTP",
       });
     }
@@ -157,14 +161,14 @@ const signup = async (req, res) => {
     });
 
     res.status(200).json({
-      status: true,
+      success: true,
       data: user,
       message: "User created successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(400).json({
-      status: false,
+      success: false,
       message: `User can't be registered. Please try again later.`,
     });
   }

@@ -41,8 +41,8 @@ router.get("/get-all-rating", getAllRating);
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)
 // ********************************************************************************************************
-router.post("/createCategory", auth, isAdmin, createCategory);
-router.get("/getAllCategories", getAllCategories);
+router.post("/create-category", auth, isAdmin, createCategory);
+router.get("/get-all-categories", getAllCategories);
 router.get("/get-category-page-details", categoryPageDetails);
 
 
