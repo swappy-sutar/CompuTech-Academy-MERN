@@ -24,5 +24,5 @@ export const categories = {
 };
 
 export const contactusEndpoint = {
-  CONTACT_US_API: BASE_URL + "/support/sendMessage",
+  CONTACT_US_API: BASE_URL + "/support/send-message",
 };
