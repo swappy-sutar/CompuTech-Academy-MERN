@@ -10,6 +10,7 @@ import UpdatePassword from "./Pages/UpdatePassword";
 import VerifyEmail from "./Pages/VerifyEmail";
 import Error from "./Pages/Error";
 import About from "./Pages/About";
+import PrivateRoute from "./Components/core/Auth/PrivateRoute";
 
 
 function App() {
@@ -21,6 +22,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="error" element={<Error />} />
         <Route path="about" element={<About />} />
+        <Route 
+      element={
+        <PrivateRoute>
+          {/* <Dashboard /> */}
+        </PrivateRoute>
+      }
+    />
+      {/* <Route path="dashboard/my-profile" element={<MyProfile />} />
+      <Route path="dashboard/Settings" element={<Settings />} /> */}
+        
         <Route
           path="signup"
           element={
