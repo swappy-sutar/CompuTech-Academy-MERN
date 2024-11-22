@@ -3,7 +3,7 @@ import { sendMessage } from "../Controllers/ContactUs.Controller.js"
 
 const router = express.Router();
 
-router.post("/sendMessage", sendMessage);
+router.post("/send-message", sendMessage);
 
 
 export default router;
