@@ -15,12 +15,17 @@ const sendMessage = async (req, res) => {
 
     const mailRes = await mailSender(
       email,
-      "Welcome to CompuTech Academy",
-      `<p>Dear ${firstName} ${lastName},</p>
-       <p>Thank you for reaching out to us. We have received your message and will get back to you shortly.</p>
-       <p>Best Regards,<br>CompuTech Academy Team</p>`
+      "Received your message - CompuTech Academy",
+      `<div style="font-family: Arial, sans-serif; border: 1px solid #ddd; padding: 20px; max-width: 600px; margin: auto;">
+      <h2 style="color: #4CAF50;">Welcome to CompuTech Academy</h2>
+      <p>Dear ${firstName} ${lastName},</p>
+      <p>Thank you for reaching out to us. We have received your message and our team will get back to you shortly.</p>
+      <p>If you have any urgent concerns, feel free to contact our support team at any time.</p>
+      <p>Best Regards,</p>
+      <p style="font-weight: bold;">The CompuTech Academy Team</p>
+      </div>`
     );
-        
+
     if (mailRes.success) {
       return res.status(200).json({
         success: true,
@@ -30,7 +35,8 @@ const sendMessage = async (req, res) => {
     } else {
       return res.status(500).json({
         success: false,
-        message: "Message saved, but we could not send the email. Please try again later.",
+        message:
+          "Message saved, but we could not send the email. Please try again later.",
       });
     }
   } catch (error) {
