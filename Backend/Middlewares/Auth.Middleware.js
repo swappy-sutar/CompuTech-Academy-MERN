@@ -29,9 +29,10 @@ const auth = async (req, res, next) => {
 
       next();
     } catch (error) {
+      console.log("Token is expire", error);
       return res.status(400).json({
         status: false,
-        message: "Invalid Token",
+        message: "Your session is expire, Please Login Again!!",
       });
     }
   } catch (error) {
