@@ -1,11 +1,54 @@
-import {Profile } from "../Models/Profile.Model.js";
-import {User} from "../Models/User.Model.js";
+import { Profile } from "../Models/Profile.Model.js";
+import { User } from "../Models/User.Model.js";
 import { Course } from "../Models/Course.Model.js";
 import { uploadImageCloudinary } from "../utils/ImageUploader.js";
 
+const updateUserName = async (req, res) => {
+  try {
+    const { firstName, lastName } = req.body;
+    const email = req.user.email;
+
+    if (!firstName || !lastName) {
+      return res.status(400).json({
+        success: false,
+        message: "First name and last name are required",
+      });
+    }
+
+    const userDetails = await User.findOneAndUpdate(
+      { email }, 
+      { firstName, lastName }, 
+      { new: true }
+    );
+
+    if (!userDetails) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Name updated successfully",
+      data: {
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName,
+      },
+    });
+  } catch (error) {
+    console.error("Error in updateUserName:", error);
+    return res.status(400).json({
+      success: false,
+      message: "An error occurred while updating the profile",
+    });
+  }
+};
+
+
 const updateProfile = async (req, res) => {
   try {
-    const { gender, dateOfBirth = "", about = "", contactNumber } = req.body;
+    const { gender, dateOfbirth = "", about = "", contactNumber } = req.body;
 
     const id = req.user.id;
 
@@ -22,7 +65,7 @@ const updateProfile = async (req, res) => {
 
     const profileDetails = await Profile.findById(profileId);
 
-    profileDetails.dateOfBirth = dateOfBirth;
+    profileDetails.dateOfbirth = dateOfbirth;
     profileDetails.about = about;
     profileDetails.contactNumber = contactNumber;
     profileDetails.gender = gender;
@@ -31,14 +74,14 @@ const updateProfile = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: profileDetails,
       message: "Profile updated successfully",
+      data: profileDetails,
     });
   } catch (error) {
     console.log(error);
     return res.status(400).json({
       success: false,
-      message: "Error updating profile",
+      message: "An error occurred while updating the user profile",
     });
   }
 };
@@ -79,7 +122,7 @@ const deleteAccount = async (req, res) => {
     console.log(error);
     return res.status(400).json({
       success: false,
-      message: "Error deleting account",
+      message: "An error occurred while deleting account",
     });
   }
 };
@@ -104,7 +147,7 @@ const updateDisplayPicture = async (req, res) => {
 
     const displayPicture = req.files.displayPicture;
 
-    const validMimeTypes = [ "image/jpeg", "image/png", "image/jpg"];
+    const validMimeTypes = ["image/jpeg", "image/png", "image/jpg"];
     if (!validMimeTypes.includes(displayPicture.mimetype)) {
       return res.status(400).json({
         success: false,
@@ -124,10 +167,11 @@ const updateDisplayPicture = async (req, res) => {
       displayPicture,
       process.env.FOLDER_NAME,
       1000,
-      100 
+      100
     );
 
-    const updatedProfile = await User.findByIdAndUpdate( userId, 
+    const updatedProfile = await User.findByIdAndUpdate(
+      userId,
       { image: image.secure_url },
       { new: true }
     );
@@ -144,13 +188,11 @@ const updateDisplayPicture = async (req, res) => {
       message: "Image updated successfully.",
       data: updatedProfile,
     });
-
   } catch (error) {
     console.error("Error in updateDisplayPicture:", error);
     return res.status(400).json({
       success: false,
-      message: "Error updating display picture."
-
+      message: "An error occurred while updating display picture.",
     });
   }
 };
@@ -168,11 +210,11 @@ const getAllUsers = async (req, res) => {
       message: "User Data fetched successfully",
       data: userDetails,
     });
-
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: "Error fetching user data",
+      message:
+        "An error occurred while fetching user data",
     });
   }
 };
@@ -196,17 +238,12 @@ const getEnrolledCourses = async (req, res) => {
       data: userDetails.courses,
     });
   } catch (error) {
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
-      message: "Error fetching enrolled courses",
+      message:
+        "An error occurred while fetching enrolled courses",
     });
   }
 };
 
-export {
-  updateProfile,
-  deleteAccount,
-  getAllUsers,
-  updateDisplayPicture,
-  getEnrolledCourses,
-};
+export { updateUserName, updateProfile, deleteAccount, getAllUsers, updateDisplayPicture, getEnrolledCourses };
