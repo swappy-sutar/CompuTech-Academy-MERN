@@ -8,7 +8,7 @@ const app = express();
 
 const corsOptions = {
   origin: ["http://localhost:5173", "http://localhost:3000", "https://computech-academy-swappy.vercel.app"],
-  methods: ["POST", "GET", "DELETE", "OPTIONS"],
+  methods: ["POST", "GET","PUT", "DELETE", "OPTIONS"],
   credentials: true,
 };
 
