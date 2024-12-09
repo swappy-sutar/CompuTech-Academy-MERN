@@ -50,7 +50,7 @@ const courseSchema = new Schema({
     },
   ],
   instructions: {
-    type: String,
+    type: [String],
   },
   status: {
     type: String,
