@@ -1,5 +1,4 @@
 import { toast } from "react-hot-toast";
-
 import { setUser } from "../../Slices/Profile.slice";
 import { apiConnector } from "../apiConnector";
 import { settingsEndpoints } from "../api";
@@ -86,18 +85,14 @@ export function updateProfile(token, formData) {
 
       const updatedUserDetails = response.data;
 
-      // Update user image
-      const userImage = updatedUserDetails.image
-        ? updatedUserDetails.image
+      const userImage = updatedUserDetails.data.image
+        ? updatedUserDetails.data.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${formData.firstName} ${formData.lastName}`;
 
-      // Dispatch the updated user details
-      dispatch(
-        setUser({
-          ...updatedUserDetails,
-          image: userImage,
-        })
-      );
+      dispatch(setUser({...updatedUserDetails.data,userImage}));
+
+      localStorage.removeItem("user");
+      localStorage.setItem("user",JSON.stringify({...updatedUserDetails.data}));
 
       toast.success("Profile Updated Successfully");
     } catch (error) {
