@@ -72,10 +72,17 @@ const updateProfile = async (req, res) => {
 
     await profileDetails.save();
 
+
+     const updatedUserDetails = await User.findById(id)
+       .select("-password")
+       .populate("additionalDetails");
+
+    // console.log("updatedUserDetails", updatedUserDetails);
+
     return res.status(200).json({
       success: true,
-      message: "Profile updated successfully",
-      data: profileDetails,
+      message: "Profile updated successfully..!!",
+      data: updatedUserDetails,
     });
   } catch (error) {
     console.log(error);
