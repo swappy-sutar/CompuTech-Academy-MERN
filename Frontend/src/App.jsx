@@ -11,9 +11,18 @@ import VerifyEmail from "./Pages/VerifyEmail";
 import Error from "./Pages/Error";
 import About from "./Pages/About";
 import PrivateRoute from "./Components/core/Auth/PrivateRoute";
-
+import ContactUs from "./Pages/ContactUs";
+import Dashboard from "./Pages/Dashboard";
+import MyProfile from "./Components/core/Dashboard/MyProfile";
+import Settings from "./Components/core/Dashboard/Settings";
+import EnrolledCourse from "./Components/core/Dashboard/EnrolledCourse";
+import { useDispatch, useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import Cart from "./Components/core/Dashboard/Cart";
+import AddCourse from "./Components/core/Dashboard/AddCourse";
 
 function App() {
+  const { user } = useSelector((state) => state.profile);
 
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
@@ -22,16 +31,36 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="error" element={<Error />} />
         <Route path="about" element={<About />} />
-        <Route 
-      element={
-        <PrivateRoute>
-          {/* <Dashboard /> */}
-        </PrivateRoute>
-      }
-    />
-      {/* <Route path="dashboard/my-profile" element={<MyProfile />} />
-      <Route path="dashboard/Settings" element={<Settings />} /> */}
-        
+        <Route path="contact" element={<ContactUs />} />
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/Settings" element={<Settings />} />
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route path="dashboard/cart" element={<Cart />} />
+              <Route
+                path="dashboard/enrolled-courses"
+                element={<EnrolledCourse />}
+              />
+            </>
+          )}
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              <Route path="dashboard/add-course" element={<AddCourse />} />
+              <Route
+                path="dashboard/enrolled-courses"
+                element={<EnrolledCourse />}
+              />
+            </>
+          )}
+        </Route>
+
         <Route
           path="signup"
           element={
@@ -72,7 +101,7 @@ function App() {
             </OpenRoute>
           }
         />
-        <Route path="error" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
