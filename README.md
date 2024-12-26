@@ -43,10 +43,6 @@ CompuTech Academy is an online learning platform that provides a variety of tech
 ### Responsive Design:
 - Optimized for both desktop and mobile devices.
 
-### Admin Panel:
-- Admins can add, edit, or delete courses.
-- View user activity and manage platform settings.
-
 
 ## User Roles:
 
@@ -55,7 +51,7 @@ CompuTech Academy is an online learning platform that provides a variety of tech
 - View user activity and manage platform settings.
 
 ### Instructor Panel:
--Instructors can create, edit, and manage their courses within assigned categories.
+- Instructors can create, edit, and manage their courses within assigned categories.
 
 ### Student Panel:
 - Students can browse and purchase courses.
