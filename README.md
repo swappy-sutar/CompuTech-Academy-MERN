@@ -18,8 +18,50 @@ CompuTech Academy is an online learning platform that provides a variety of tech
 ### Backend
 - **Node.js**: Server-side logic.
 - **Express.js**: Backend framework.
+
+### Database:
 - **MongoDB**: Database for managing users and course data.
 
-## Installation
+### Authentication:
+- **JWT**: (JSON Web Tokens)
 
-Follow these steps to set up the project locally:
+### Other Tools:
+- Cloudinary for media storage
+- Email notifications for updates and reminders
+
+
+## Features
+
+### User Authentication:
+- Secure login and registration functionality.
+- User profiles to manage enrolled courses.
+
+### Course Management:
+- Browse and enroll in various technology courses.
+- Detailed course content and progress tracking.
+
+### Responsive Design:
+- Optimized for both desktop and mobile devices.
+
+### Admin Panel:
+- Admins can add, edit, or delete courses.
+- View user activity and manage platform settings.
+
+
+## User Roles:
+
+### Admin Panel:
+- Admins can create and manage categories for courses.
+- View user activity and manage platform settings.
+
+### Instructor Panel:
+-Instructors can create, edit, and manage their courses within assigned categories.
+
+### Student Panel:
+- Students can browse and purchase courses.
+- Access enrolled courses and track progress.
+
+
+
+
+
