@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { apiConnector } from "../../Services/ApiConnector";
 import { categoriesEndpoint } from "../../Services/api";
 import { FaAngleDown } from "react-icons/fa6";
-import logo from "../../assets/Logo/Logo-Full-Light.png";
+import logo from "../../assets/Logo/PNG NEW LOGO.png";
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
 
 function Navbar() {
@@ -49,7 +49,7 @@ function Navbar() {
       <div className="w-11/12 flex items-center max-w-maxContent justify-between">
         {/* Logo */}
         <Link to={"/"}>
-          <img src={logo} alt="logo" width={160} height={42} loading="lazy" />
+          <img src={logo} alt="logo" width={180} height={52} loading="lazy" />
         </Link>
 
         {/* Hamburger Menu (Mobile) */}
