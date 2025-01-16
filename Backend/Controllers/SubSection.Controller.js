@@ -32,6 +32,9 @@ const createSubSection = async (req, res) => {
       { new: true }
     ).populate("subSections");
 
+    console.log("updateSection", updateSection);
+    
+
     return res.status(200).json({
       sucess: true,
       message: "Sub-section created successfully",

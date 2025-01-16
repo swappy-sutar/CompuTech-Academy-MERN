@@ -23,6 +23,9 @@ const createSection = async (req, res) => {
     )
       .populate({
         path: "courseContent",
+        populate: {
+          path: "subSections",
+        },
       })
       .populate({
         path: "instructor",
