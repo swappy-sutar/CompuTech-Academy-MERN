@@ -1,11 +1,7 @@
 import React from "react";
 import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
-
-// Images
-import Logo from "../../assets/Logo/Logo-Full-Light.png";
-
-// Icons
+import Logo from "../../assets/Logo/PNG NEW LOGO.png";
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
@@ -19,7 +15,7 @@ const Resources = [
   "Videos",
   "Workspaces",
 ];
-const Plans = ["Paid memberships", "For students", "Business solutions"];
+// const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
 
 const Footer = () => {
@@ -34,17 +30,17 @@ const Footer = () => {
               <h1 className="text-richblack-50 font-semibold text-[16px]">
                 Company
               </h1>
+
               <div className="flex flex-col gap-2">
-                {["About", "Careers", "Affiliates"].map((ele, i) => {
-                  return (
-                    <div
-                      key={i}
-                      className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
-                    >
-                      <Link to={ele.toLowerCase()}>{ele}</Link>
-                    </div>
-                  );
-                })}
+                <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200">
+                  <Link to={"/about"}>{"About"}</Link>
+                </div>
+                <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200">
+                  <Link to={"/Careers"}>{"Careers"}</Link>
+                </div>
+                <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200">
+                  <Link to={"/Affiliates"}>{"Affiliates"}</Link>
+                </div>
               </div>
               <div className="flex gap-3 text-lg">
                 <FaFacebook />
@@ -53,6 +49,12 @@ const Footer = () => {
                 <FaYoutube />
               </div>
               <div></div>
+              <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
+                Support
+              </h1>
+              <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
+                <Link to={"/contact"}>Help Center</Link>
+              </div>
             </div>
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
@@ -74,16 +76,9 @@ const Footer = () => {
                   );
                 })}
               </div>
-
-              <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
-                Support
-              </h1>
-              <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
-                <Link to={"/help-center"}>Help Center</Link>
-              </div>
             </div>
 
-            <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
+            {/* <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
               <h1 className="text-richblack-50 font-semibold text-[16px]">
                 Plans
               </h1>
@@ -120,7 +115,7 @@ const Footer = () => {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Section 2 */}
