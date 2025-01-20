@@ -80,7 +80,7 @@ function Home() {
         </div>
 
         {/* code sec-2 */}
-        <div>
+        <div className="items-center justify-center">
           <CodeBlock
             position={`lg:flex-row-reverse`}
             heading={
@@ -112,7 +112,7 @@ function Home() {
 
       {/* Section 2 */}
       <div className="bg-pure-greys-5 text-richblack-700 ">
-        <div className="homepage_bg h-[310px] ">
+        <div className="homepage_bg md:h-[250px] ">
           <div className="w-11/12 flex-col max-w-maxContent flex justify-center items-center gap-5 mx-auto ">
             <div className="h-[150px] "></div>
 
@@ -132,7 +132,7 @@ function Home() {
         </div>
 
         <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
-          <div className="flex flex-row gap-5 mb-10 mt-[95px]">
+          <div className="flex flex-row gap-5 md:mb-8 mt-[95px]">
             <div className="text-4xl font-semibold w-[45%]">
               Get the Skills you need for a
               <HighlightText text={"Job that is in demand"} />
