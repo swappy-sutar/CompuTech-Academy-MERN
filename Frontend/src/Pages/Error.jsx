@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/Logo/PNG LOGO.png";
 
 function Error() {
   return (
@@ -14,7 +15,7 @@ function Error() {
       </p>
       <Link
         to="/"
-        className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md font-medium text-lg transition duration-200"
+        className="bg-yellow-50 hover:bg-yellow-100 text-black px-6 py-3 rounded-md font-medium text-lg transition duration-200"
       >
         Back to Home
       </Link>
