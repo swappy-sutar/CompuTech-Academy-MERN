@@ -41,12 +41,11 @@ export const courseEndpoints = {
   CREATE_SUBSECTION_API: BASE_URL + "/course/create-sub-section",
   UPDATE_SECTION_API: BASE_URL + "/course/update-section",
   UPDATE_SUBSECTION_API: BASE_URL + "/course/update-sub-section",
-  GET_ALL_INSTRUCTOR_COURSES_API: BASE_URL + "/course/getInstructorCourses",
+  GET_ALL_INSTRUCTOR_COURSES_API: BASE_URL + "/course/get-instructor-courses",
   DELETE_SECTION_API: BASE_URL + "/course/delete-section",
   DELETE_SUBSECTION_API: BASE_URL + "/course/delete-sub-section",
-  DELETE_COURSE_API: BASE_URL + "/course/deleteCourse",
-  GET_FULL_COURSE_DETAILS_AUTHENTICATED:
-BASE_URL + "/course/getFullCourseDetails",
+  DELETE_COURSE_API: BASE_URL + "/course/delete-course",
+  GET_FULL_COURSE_DETAILS_AUTHENTICATED:BASE_URL + "/course/get-full-course-details",
   LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/course/create-rating",
 };
