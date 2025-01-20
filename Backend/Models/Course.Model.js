@@ -56,6 +56,8 @@ const courseSchema = new Schema({
     type: String,
     enum: ["Draft", "Published"],
   },
+},{
+  timestamps:true
 });
 
 export const Course = mongoose.model("Course", courseSchema);

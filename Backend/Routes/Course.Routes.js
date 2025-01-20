@@ -3,7 +3,15 @@ const router = express.Router();
 import {isAdmin,isInstructor,isStudent,auth} from "../Middlewares/Auth.Middleware.js"
 
 import { createCategory, getAllCategories, categoryPageDetails } from "../Controllers/Category.Controller.js";
-import { createCourse,updateCourse,deleteCourse, getAllCourses, getCourseDetails} from "../Controllers/Course.Controller.js";
+import {
+  createCourse,
+  updateCourse,
+  deleteCourse,
+  getAllCourses,
+  getCourseDetails,
+  getInstructorCourses,
+  getFullCourseDetails,
+} from "../Controllers/Course.Controller.js";
 
 import { createSubSection, updateSubSection, deleteSubSection} from "../Controllers/SubSection.Controller.js";
 import { createSection, updateSection, deleteSection} from "../Controllers/Section.Controller.js";
@@ -16,8 +24,11 @@ import { createRating, getAverageRating, getAllRating} from "../Controllers/Rati
 
 router.post("/create-course", auth ,isInstructor , createCourse);
 router.post("/update-course", auth, isInstructor, updateCourse);
-router.post("/delete-course", auth, isInstructor, deleteCourse);
+router.delete("/delete-course", auth, isInstructor, deleteCourse);
+router.get("/get-instructor-courses", auth, isInstructor, getInstructorCourses);
 router.post("/get-course-details", getCourseDetails);
+router.post("/get-full-course-details",auth, getFullCourseDetails);
+
 router.get("/get-all-courses", getAllCourses);
 
 router.post("/create-section", auth, isInstructor, createSection);
