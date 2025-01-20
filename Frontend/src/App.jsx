@@ -20,6 +20,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from "./Components/core/Dashboard/Cart";
 import AddCourse from "./Components/core/Dashboard/AddCourse";
+import MyCourses from "./Components/core/Dashboard/MyCourses";
+import EditCourse from "./Components/core/Dashboard/EditCourse/Index"
+import Catalog from "./Pages/Catalog";
+
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -29,6 +33,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/catalog/:catalogname" element={<Catalog />} />
+
         <Route path="error" element={<Error />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<ContactUs />} />
@@ -53,6 +59,12 @@ function App() {
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
               <Route path="dashboard/add-course" element={<AddCourse />} />
+              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              <Route
+                path="dashboard/edit-course/:courseId"
+                element={<EditCourse />}
+              />
+
               <Route
                 path="dashboard/enrolled-courses"
                 element={<EnrolledCourse />}
