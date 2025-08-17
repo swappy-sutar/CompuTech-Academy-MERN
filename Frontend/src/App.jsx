@@ -19,7 +19,7 @@ import EnrolledCourse from "./Components/core/Dashboard/EnrolledCourse";
 import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from "./Components/core/Dashboard/Cart";
-import AddCourse from "./Components/core/Dashboard/AddCourse";
+import AddCourse from "./Components/core/Dashboard/AddCourse/Index";
 import MyCourses from "./Components/core/Dashboard/MyCourses";
 import EditCourse from "./Components/core/Dashboard/EditCourse/Index"
 import Catalog from "./Pages/Catalog";
