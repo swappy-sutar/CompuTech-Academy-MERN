@@ -8,7 +8,7 @@ import { RiVideoAddFill } from "react-icons/ri";
 import { MdOutlineVideoCameraBack, MdOutlineFileCopy } from "react-icons/md";
 import { deleteSection, deleteSubSection } from "../../../../../Services/operations/courseDetailsAPI";
 import { setCourse, deleteCourseSection } from "../../../../../Slices/Course.slice";
-import ConfirmationModal from "../../../../Common/ConfirmationModal";
+import ConfirmationModal from "../../../../common/ConfirmationModal";
 import SubSectionModal from "./SubSectionModal";
 
 export default function NestedView({ handleChangeEditSectionName }) {
