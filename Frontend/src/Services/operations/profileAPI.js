@@ -1,8 +1,8 @@
 import { toast } from "react-hot-toast"
 
 import { setLoading, setUser } from "../../Slices/Profile.slice";
-import { apiConnector } from "../apiconnector"
-import { profileEndpoints } from "../api"
+import { apiConnector } from "../apiConnector.js"
+import { profileEndpoints } from "../api.js"
 import { logout } from "./authAPI"
 
 const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API } = profileEndpoints
