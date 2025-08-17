@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL+"api/v1";
 
 export const endpoints = {
   SENDOTP_API: BASE_URL + "/auth/send-OTP",

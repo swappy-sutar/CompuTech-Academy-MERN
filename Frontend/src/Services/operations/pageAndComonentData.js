@@ -3,9 +3,13 @@ import toast from "react-hot-toast";
 import { apiConnector } from "../ApiConnector";
 import { catalogData } from "../api";
 
-const getCatlogPageData = async () => {
+const getCatalogPageData = async (categoryId) => {
   const toastId = toast.loading("Loading...");
   let result = [];
+    console.log("running in getCatalogPageData");
+
+  console.log("categoryId", categoryId);
+  
   try {
     const response = await apiConnector(
       "POST",
@@ -14,6 +18,7 @@ const getCatlogPageData = async () => {
         categoryId: categoryId,
       }
     );
+    console.log("response of CATALOGPAGEDATA_API: ", response);
 
     if (!response?.data?.success) {
       throw new Error(response.data.message);
@@ -29,4 +34,4 @@ const getCatlogPageData = async () => {
   return result;
 };
 
-export default getCatlogPageData;
+export default getCatalogPageData;
