@@ -5,7 +5,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { createSubSection, updateSubSection } from "../../../../../Services/operations/courseDetailsAPI";
 import { setCourse } from "../../../../../Slices/Course.slice";
-import IconBtn from "../../../../Common/IconBtn";
+import IconBtn from "../../../../common/IconBtn";
 import Upload from "../Upload";
 
 export default function SubSectionModal({ modalData, setModalData, add = false, view = false, edit = false }) {

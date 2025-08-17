@@ -13,7 +13,7 @@ import {
 
 import { setCourse, setStep } from "../../../../../Slices/Course.slice";
 import { COURSE_STATUS } from "../../../../../utils/constants";
-import IconBtn from "../../../../Common/IconBtn";
+import IconBtn from "../../../../common/IconBtn";
 import Upload from "../Upload";
 import ChipInput from "./ChipInput";
 import RequirementsField from "./RequirementsField";

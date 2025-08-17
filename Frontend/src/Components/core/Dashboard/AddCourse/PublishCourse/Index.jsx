@@ -5,7 +5,7 @@ import { MdNavigateNext } from "react-icons/md";
 import { resetCourseState, setStep } from "../../../../../Slices/Course.slice";
 import { COURSE_STATUS } from "../../../../../utils/constants";
 import { editCourseDetails } from "../../../../../Services/operations/courseDetailsAPI";
-import IconBtn from "../../../../Common/IconBtn";
+import IconBtn from "../../../../common/IconBtn";
 import { useNavigate } from "react-router-dom";
 
 

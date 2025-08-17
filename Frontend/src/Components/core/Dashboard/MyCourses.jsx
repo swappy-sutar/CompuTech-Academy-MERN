@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { fetchInstructorCourses } from "../../../Services/operations/courseDetailsAPI";
-import IconBtn from "../../Common/IconBtn";
+import IconBtn from "../../common/IconBtn";
 import { FaPlus } from "react-icons/fa6";
 import CourseTable from "./InstructorCourses/CourseTable";
 
