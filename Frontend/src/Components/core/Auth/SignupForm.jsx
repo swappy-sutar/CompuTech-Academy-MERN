@@ -4,7 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { sendOtp } from "../../../services/operations/authAPI";
+import { sendOtp } from "../../../Services/operations/authAPI";
 import { setSignupData } from "../../../Slices/Auth.slice.js";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
 import Tab from "../../common/Tab";

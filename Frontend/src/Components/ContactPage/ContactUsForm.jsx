@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CountryCode from "../../data/countrycode.json";
-import { apiConnector } from "../../services/apiconnector";
-import { contactusEndpoint } from "../../services/api";
+import { apiConnector } from "../../Services/apiconnector";
+import { contactusEndpoint } from "../../Services/api";
 import { toast } from "react-hot-toast";
 
 const ContactUsForm = () => {

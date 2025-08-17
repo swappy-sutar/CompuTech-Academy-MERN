@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { getPasswordResetToken } from "../services/operations/authAPI.js";
+import { getPasswordResetToken } from "../Services/operations/authAPI.js";
 import { IoMdMailUnread } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Loader from "../Components/common/Loader";

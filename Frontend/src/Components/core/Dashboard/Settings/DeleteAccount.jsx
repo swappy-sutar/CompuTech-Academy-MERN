@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { deleteProfile } from "../../../../services/operations/SettingsAPI";
+import { deleteProfile } from "../../../../Services/operations/SettingsAPI";
 import ConfirmationModal from "../../../common/ConfirmationModal";
 
 export default function DeleteAccount() {
