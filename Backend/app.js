@@ -7,8 +7,12 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:3000", "https://computech-academy-swappy.vercel.app"],
-  methods: ["POST", "GET","PUT", "DELETE", "OPTIONS"],
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://computech-academy.vercel.app",
+  ],
+  methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 };
 
