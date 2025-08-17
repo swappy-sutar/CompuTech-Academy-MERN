@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoReturnDownBackOutline } from "react-icons/io5";
-import { resetPassword } from "../services/operations/authAPI";
+import { resetPassword } from "../Services/operations/authAPI";
 import { useNavigate } from "react-router-dom";
 
 function UpdatePassword() {

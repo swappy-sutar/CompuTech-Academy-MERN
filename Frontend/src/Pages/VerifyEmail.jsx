@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { IoReturnDownBackOutline, IoReload } from "react-icons/io5";
 import OTPInput from "react-otp-input";
-import { signUp, sendOtp } from "../services/operations/authAPI";
+import { signUp, sendOtp } from "../Services/operations/authAPI";
 import Loader from "../Components/common/Loader";
 
 function VerifyEmail() {
