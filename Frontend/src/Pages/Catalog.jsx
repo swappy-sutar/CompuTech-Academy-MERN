@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { apiConnector } from "../Services/ApiConnector";
+import { apiConnector } from "../Services/apiConnector.js";
 import { categoriesEndpoint } from "../Services/api";
 import getCatalogPageData from "../Services/operations/pageAndComonentData";
 import Error from "./Error";

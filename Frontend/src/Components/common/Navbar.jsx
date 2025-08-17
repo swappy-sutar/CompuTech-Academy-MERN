@@ -4,7 +4,7 @@ import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { apiConnector } from "../../Services/ApiConnector";
+import { apiConnector } from "../../Services/apiConnector.js";
 import { categoriesEndpoint } from "../../Services/api";
 import { FaAngleDown } from "react-icons/fa6";
 import logo from "../../assets/Logo/PNG NEW LOGO.png";
