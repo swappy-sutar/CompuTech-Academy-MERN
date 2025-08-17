@@ -5,7 +5,7 @@ import Navbar from "./Components/common/Navbar";
 import Signup from "./Pages/Signup"
 import Login from "./Pages/Login"
 import ForgotPassword from "./Pages/ForgotPassword";
-import OpenRoute from "./components/core/Auth/OpenRoute";
+import OpenRoute from "./Components/core/Auth/OpenRoute";
 import UpdatePassword from "./Pages/UpdatePassword";
 import VerifyEmail from "./Pages/VerifyEmail";
 import Error from "./Pages/Error";
