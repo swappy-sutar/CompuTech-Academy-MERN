@@ -96,11 +96,13 @@ const createCourse = async (req, res) => {
       { _id: categoryId },
       {
         $push: {
-          courses: newCourse._id,
+          course: newCourse._id,
         },
       },
       { new: true }
     );
+ console.log("updatedCategoryDetails", updatedCategoryDetails);
+ 
 
     return res.status(200).json({
       success: true,

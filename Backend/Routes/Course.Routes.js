@@ -2,7 +2,11 @@ import express from "express";
 const router = express.Router();
 import {isAdmin,isInstructor,isStudent,auth} from "../Middlewares/Auth.Middleware.js"
 
-import { createCategory, getAllCategories, categoryPageDetails } from "../Controllers/Category.Controller.js";
+import {
+  createCategory,
+  getAllCategories,
+  categoryPageDetails,
+} from "../Controllers/Category.Controller.js";
 import {
   createCourse,
   updateCourse,
@@ -54,7 +58,7 @@ router.get("/get-all-rating", getAllRating);
 // ********************************************************************************************************
 router.post("/create-category", auth, isAdmin, createCategory);
 router.get("/get-all-categories", getAllCategories);
-router.get("/get-category-page-details", categoryPageDetails);
+router.post("/get-category-page-details", categoryPageDetails);
 
 
 export default router;
